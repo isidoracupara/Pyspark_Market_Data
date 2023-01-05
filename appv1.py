@@ -8,7 +8,7 @@ from pyspark.ml.regression import LinearRegression
 api_key = "ceqjsr2ad3i9f7a52g10ceqjsr2ad3i9f7a52g1g"
 
 # Create a SparkSession
-spark = SparkSession.builder.appName("My App").getOrCreate()
+# spark = SparkSession.builder.appName("My App").getOrCreate()
 
 # Set up the Spark streaming context
 sc = SparkContext(appName="FinnhubStream")

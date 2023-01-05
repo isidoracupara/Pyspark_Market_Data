@@ -1,0 +1,4 @@
+numpy==1.24.1
+py4j==0.10.9.5
+pyspark==3.3.1
+websocket-client==1.4.2

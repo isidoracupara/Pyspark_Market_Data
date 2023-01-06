@@ -1,21 +1,22 @@
 import websocket
 import json
+from os import getenv
 from pyspark import SparkContext
 from pyspark.sql import SparkSession
 from pyspark.streaming import StreamingContext
 from pyspark.ml.regression import LinearRegression
 
-api_key = "ceqjsr2ad3i9f7a52g10ceqjsr2ad3i9f7a52g1g"
-
 # Create a SparkSession
 # spark = SparkSession.builder.appName("My App").getOrCreate()
+
+api_key = getenv("api_key")
 
 # Set up the Spark streaming context
 sc = SparkContext(appName="FinnhubStream")
 ssc = StreamingContext(sc, 1) 
 
 # Create a DStream that receives data over a network connection
-lines = ssc.socketTextStream("hostname", 9999)
+lines = ssc.socketTextStream("hostname", 443)
 
 # Set up the WebSocket connection
 def on_message(ws, message):
@@ -80,3 +81,5 @@ ssc.awaitTermination()
 # Stop the streaming context and close the WebSocket connection
 ssc.stop()
 ws.close()
+
+
